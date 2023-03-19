@@ -1,0 +1,11 @@
+Nomes 		  Idades
+Katia 		 42
+Bernardo 		 15
+Samantha 		 23
+Maria 		 8
+Mariah 		 2
+Breno 		 9
+Rony 		 21
+Luan 		 22
+Mirele 		 23
+Verônica 		 23
