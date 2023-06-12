@@ -57,6 +57,16 @@ void printList(struct Node* lista) {
   }
 }
 
+// Função para desalocar a memória da lista
+void freeList(struct Node* lista) {
+  struct Node* aux = lista;
+  while (aux != NULL) {
+    struct Node* temp = aux;
+    aux = aux->prox;
+    free(temp);
+  }
+}
+
 // Função principal
 int main() {
   struct Node* lista = NULL;
