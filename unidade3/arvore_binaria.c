@@ -25,7 +25,7 @@ struct Node* createNode(int data, struct Node* left, struct Node* right) {
 struct Node* insertNode(struct Node* root, int data) {
 
   if(!root) { // chegou na folha
-    createNode(data, NULL, NULL);
+    return createNode(data, NULL, NULL);
   } else {
     if(data < root->data) {
       root->left = insertNode(root->left, data);
