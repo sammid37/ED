@@ -25,6 +25,9 @@ void main() {
 
   if(!criarLista(&l)) {
     printf("Não foi possível criar a lista.\n");
+    return;
+  } else {
+    printf("Lista criada com sucesso.\n");
   }
 
   // inserção
@@ -46,7 +49,7 @@ void main() {
   inserir(&l, 18);
   mostrarLista(&l);
 
-  inserir(&l, 18);
+  // inserir(&l, 18);
 
 }
 

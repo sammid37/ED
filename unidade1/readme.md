@@ -143,7 +143,7 @@ Contém anotações e exemplos ministrados durante a unidade 1 da disciplina de 
   }
   ```
 #### Estruturas de Dados em C
-> As Estruturas de Dados estudadas durante a Unidade 1 da disciplina são: Listas, Listas Encadeadas e \<em breve\>.
+> As Estruturas de Dados estudadas durante a Unidade 1 da disciplina são: Listas Estáticas e Listas Dinâmicas.
 
 * Aula 6 @ 14/03/2023 (✏️ em edição)
   * **LISTAS**
