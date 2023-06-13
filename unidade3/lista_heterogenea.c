@@ -67,6 +67,17 @@ void freeList(struct Node* lista) {
   }
 }
 
+void* searchElement(struct Node* lista, char id) {
+  struct Node* aux = lista;
+  while (aux != NULL) {
+    if (aux->id == id) {
+      return aux->info;
+    }
+    aux = aux->prox;
+  }
+  return NULL; // Retorna NULL se o elemento não for encontrado
+}
+
 // Função principal
 int main() {
   struct Node* lista = NULL;
@@ -82,6 +93,28 @@ int main() {
   // Imprimir os elementos da lista
   printf("Elementos da lista:\n");
   printList(lista);
+
+  // Buscar um elemento na lista
+  char searchId = 'f';
+  struct Node* foundNode = searchElement(lista, searchId);
+  if (foundNode != NULL) {
+    switch (foundNode->id) {
+      case 'i':
+        printf("Elemento encontrado: Valor Inteiro: %d\n", *((int*)(foundNode->info)));
+        break;
+      case 'f':
+        printf("Elemento encontrado: Valor Float: %.2f\n", *((float*)(foundNode->info)));
+        break;
+      case 'c':
+        printf("Elemento encontrado: Valor Char: %c\n", *((char*)(foundNode->info)));
+        break;
+    }
+  } else {
+    printf("Elemento não encontrado.\n");
+  }
+
+  // Desalocar a memória da lista
+  freeList(lista);
 
   return 0;
 }

@@ -130,6 +130,35 @@ void inOrderTraversal(struct Node* root) {
   }
 }
 
+// Função para calcular a altura de uma árvore binária
+int calculateHeight(struct Node* root) {
+  if (root == NULL) {
+      return 0;
+  } else {
+      int leftHeight = calculateHeight(root->left);
+      int rightHeight = calculateHeight(root->right);
+      return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+  }
+}
+
+// Função para verificar se a árvore está balanceada
+int isBalanced(struct Node* root) {
+  if (root == NULL) {
+    return 1;
+  }
+
+  int leftHeight = calculateHeight(root->left);
+  int rightHeight = calculateHeight(root->right);
+  int balanceFactor = abs(leftHeight - rightHeight);
+
+  if (balanceFactor <= 1 && isBalanced(root->left) && isBalanced(root->right)) {
+    return 1;
+  }
+
+  return 0;
+}
+
+
 // Função principal
 int main() {
   struct Node* root = NULL;
