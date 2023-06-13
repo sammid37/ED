@@ -37,11 +37,44 @@ typedef struct no {
 tNo* insere(int valor, tNo *raiz);
 ```
 
+**Resolução**
+```c
+tNo * insere(int v, tNo *raiz) {
+  if(!raiz) {
+    raiz = criar(v, 0, 0); // criar(v, NULL, NULL); 
+  } else {
+    // realiza validação de onde inserir
+    if(v < raiz->dado) {
+      raiz->esq = insere(v, raiz->esq);
+    } else {
+      raiz->dir = insere(v, raiz->dir);
+    }
+  }
+
+  return raiz;
+}
+
+tNo * criar(int v, tNo* esq, tNo* dir) {
+  tNo * novoNo = (tNo*) malloc(sizeof(tNo));
+  if(!tNo) {
+    printf("Não foi possível alocar memória");
+    exit(1);
+  }
+
+  // inicializa
+  novoNo->dado = v;
+  novoNo->esq = esq;
+  novoNo->dir = dir;
+
+  return novoNo;
+}
+```
+
 ##### b) Insira a seguinte sequência de elementos na árvore de busca binária, considerando que inicialmente a árvore encontra-se vazia (fazer apenas o desenho da árvore).
 
 > 15 – 22 – 12 – 14 – 17 – 10 – 24 – 19 – 21 – 11 – 18 – 16
 
-![árovre_binaria](img/q4b.png)
+![árovre_binaria](../img/q4b.png)
 
 ##### c)Faça o balanceamento da subárvore de raiz 22. Escreva toda a sequência de passos (código) necessários para esta operação.
 
@@ -77,7 +110,7 @@ raiz22 = rotacaoEsquerda(raiz22);
 
 #### 6) Escreva as linhas de código para remover o nó com valor ‘O’ da árvore de busca binária representada abaixo.
 
-![árovre_binaria](img/q6.png)
+![árovre_binaria](../img/q6.png)
 
 **Resolução**
 ```c

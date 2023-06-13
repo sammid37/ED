@@ -84,24 +84,44 @@ struct Node* deleteNode(struct Node* root, int data) {
   if (root == NULL) {
     return root;
   }
+
+  // Caso o valor a ser removido seja menor que o valor do nó atual,
+  // chama recursivamente a função para o filho esquerdo.
   if (data < root->data) {
     root->left = deleteNode(root->left, data);
-  } else if (data > root->data) {
-    root->right = deleteNode(root->right, data);
-  } else {
-    if (root->left == NULL) {
-      struct Node* temp = root->right;
-      free(root);
-      return temp;
-    } else if (root->right == NULL) {
-      struct Node* temp = root->left;
-      free(root);
-      return temp;
-    }
-    struct Node* temp = findMinNode(root->right);
-    root->data = temp->data;
-    root->right = deleteNode(root->right, temp->data);
   }
+  // Caso o valor a ser removido seja maior que o valor do nó atual,
+  // chama recursivamente a função para o filho direito.
+  else if (data > root->data) {
+    root->right = deleteNode(root->right, data);
+  }
+  // Caso o valor a ser removido seja igual ao valor do nó atual,
+  // executa a lógica de remoção.
+  else {
+    // Caso 1: Nó é uma folha.
+    if (root->left == NULL && root->right == NULL) {
+      free(root);
+      root = NULL;
+    }
+    // Caso 2: Nó possui apenas um filho.
+    else if (root->left == NULL) {
+      struct Node* temp = root;
+      root = root->right;
+      free(temp);
+    }
+    else if (root->right == NULL) {
+      struct Node* temp = root;
+      root = root->left;
+      free(temp);
+    }
+    // Caso 3: Nó possui dois filhos.
+    else {
+      struct Node* temp = findMinNode(root->right);
+      root->data = temp->data;
+      root->right = deleteNode(root->right, temp->data);
+    }
+  }
+
   return root;
 }
 
